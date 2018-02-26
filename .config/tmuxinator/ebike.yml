@@ -1,0 +1,14 @@
+# ~/.tmuxinator/ebike.yml
+
+name: ebike
+root: ~/Repositories/ebike-website/ebike
+
+windows:
+  - server:
+      layout: tiled
+      panes:
+        - mongo 
+        - tail -f /var/log/mongodb/mongod.log -n 7
+        - ssh ebike.samk.fi
+        - sudo npm run start 
+  - editor: nvim
