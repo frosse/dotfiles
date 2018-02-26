@@ -23,6 +23,9 @@ source $ZSH/oh-my-zsh.sh
 
 alias home="cd ~"
 alias v="nvim"
+alias work="mux start workspace"
+alias ebike="mux start ebike"
+alias terveys="mux start terveys"
 
 prompt_context() {
   if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
