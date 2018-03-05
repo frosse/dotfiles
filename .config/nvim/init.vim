@@ -66,15 +66,16 @@ set sidescroll=5
 set noswapfile
 set nobackup
 set nowb
-
 "hi clear CursorLine
 "hi Cursorline gui=underline cterm=underline ctermfg=None guifg=None
 
 "Match tags always config
 let g:mta_use_matchparen_group = 1
 let g:mta_filetypes = { 'html' :1,'xhtml' :1,'xml' :1, 'js' :1,'javascript.jsx': 1}
+
 " FZF configuration
 let g:fzf_layout = {'down': '~20%'}
+
 " Plugin shortcuts
 map <C-b> :NERDTreeToggle<CR>
 
@@ -82,8 +83,6 @@ map <C-b> :NERDTreeToggle<CR>
 let g:airline_theme='powerlineish'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
-"let g:airline#extensions#tabline#left_sep = '|'
-"let g:airline#extensions#tabline#left_alt_sep = '?'
 
 syntax on
 
