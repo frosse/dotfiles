@@ -6,8 +6,9 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'Raimondi/delimitMate'
-"Plug 'pangloss/vim-javascript'
-Plug 'jelera/vim-javascript-syntax', {'autoload':{'filetypes': ['javascript']}}
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+"Plug 'jelera/vim-javascript-syntax', {'autoload':{'filetypes': ['javascript']}}
 Plug 'mxw/vim-jsx'
 Plug 'elzr/vim-json'
 Plug 'Valloric/MatchTagAlways'
@@ -36,7 +37,7 @@ set gcr=a:blinkon500-blinkwait500-blinkoff500
 set cursorline
 set smartcase
 set ignorecase
-set mouse=a
+set mouse=r
 set showmatch
 set nostartofline
 set timeoutlen=1000 ttimeoutlen=0

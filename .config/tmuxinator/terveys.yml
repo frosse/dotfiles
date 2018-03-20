@@ -7,7 +7,7 @@ windows:
   - Servers:
       layout: tiled
       panes:
-        - npm run buil
+        - npm run build
         - nodemon 
         - tail -f /var/log/mongodb/mongod.log
         - mongo
