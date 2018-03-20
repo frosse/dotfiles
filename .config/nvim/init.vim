@@ -18,14 +18,15 @@ Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
 "Colorschemes
 Plug 'joshdick/onedark.vim'
 Plug 'lifepillar/vim-solarized8'
+Plug 'altercation/vim-colors-solarized'
 Plug 'liuchengxu/space-vim-dark'
 Plug 'chriskempson/base16-vim'
+Plug 'aurieh/discord.nvim', { 'do': ':UpdateRemotePlugins'}
 call plug#end()
 
-filetype plugin indent on
 
-silent!colorscheme base16-tomorrow-night
-set termguicolors
+filetype plugin indent on
+syntax on
 set title
 set number
 set relativenumber
@@ -47,7 +48,6 @@ set linebreak
 set listchars=tab:\ \ ,trail:·
 set list
 set lazyredraw
-set background=dark
 set hidden
 
 " Indentation
@@ -81,11 +81,10 @@ let g:fzf_layout = {'down': '~20%'}
 map <C-b> :NERDTreeToggle<CR>
 
 " Airline config
-let g:airline_theme='powerlineish'
+let g:airline_theme='luna'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 
-syntax on
 
 set path+=**
 
@@ -96,5 +95,11 @@ inoremap jk <Esc>
 nnoremap <C-n> :bnext<CR>
 nnoremap <C-p> :bprevious<CR>
 nnoremap j gj
-
+set t_8f=^[[38;2;%lu;%lu;%lum  " Needed in tmux
+set t_8b=^[[48;2;%lu;%lu;%lum  " Ditto
 nnoremap k gk
+let g:solarized_termcolors=16
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+set termguicolors
+set background=dark
+colorscheme solarized8_dark
