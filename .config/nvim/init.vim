@@ -26,7 +26,6 @@ call plug#end()
 
 filetype plugin indent on
 syntax on
-colorscheme solarized8_dark_flat 
 set title
 set number
 set relativenumber
@@ -102,3 +101,4 @@ let g:solarized_termcolors=16
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set termguicolors
 set background=dark
+colorscheme solarized8_dark
