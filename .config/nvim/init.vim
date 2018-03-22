@@ -20,7 +20,7 @@ Plug 'lifepillar/vim-solarized8'
 Plug 'altercation/vim-colors-solarized'
 Plug 'liuchengxu/space-vim-dark'
 Plug 'chriskempson/base16-vim'
-Plug 'aurieh/discord.nvim', { 'do': ':UpdateRemotePlugins'}
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 call plug#end()
 
 
@@ -57,7 +57,7 @@ set expandtab
 set smartindent
 set nofoldenable
 
-" Scrolling
+"Scrolling
 set scrolloff=8
 set sidescrolloff=15
 set sidescroll=5
@@ -72,7 +72,8 @@ set nowb
 "Match tags always config
 let g:mta_use_matchparen_group = 1
 let g:mta_filetypes = { 'html' :1,'xhtml' :1,'xml' :1, 'js' :1,'javascript.jsx': 1}
-
+" DEOPLETE
+let g:deoplete#enable_at_startup = 1"
 " FZF configuration
 let g:fzf_layout = {'down': '~20%'}
 
