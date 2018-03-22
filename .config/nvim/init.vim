@@ -15,7 +15,6 @@ Plug 'Valloric/MatchTagAlways'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
-"Colorschemes
 Plug 'joshdick/onedark.vim'
 Plug 'lifepillar/vim-solarized8'
 Plug 'altercation/vim-colors-solarized'
@@ -67,14 +66,14 @@ set sidescroll=5
 set noswapfile
 set nobackup
 set nowb
-"hi clear CursorLine
-"hi Cursorline gui=underline cterm=underline ctermfg=None guifg=None
 
 "Match tags always config
 let g:mta_use_matchparen_group = 1
 let g:mta_filetypes = { 'html' :1,'xhtml' :1,'xml' :1, 'js' :1,'javascript.jsx': 1}
+
 " DEOPLETE
 let g:deoplete#enable_at_startup = 1"
+
 " FZF configuration
 let g:fzf_layout = {'down': '~20%'}
 
@@ -103,4 +102,4 @@ let g:solarized_termcolors=16
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set termguicolors
 set background=dark
-colorscheme solarized8_dark
+colorscheme solarized8_dark_flat
