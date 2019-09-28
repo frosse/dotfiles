@@ -1,26 +1,42 @@
 call plug#begin()
 
 Plug 'scrooloose/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-fugitive'
-Plug 'Raimondi/delimitMate'
-Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
-"Plug 'jelera/vim-javascript-syntax', {'autoload':{'filetypes': ['javascript']}}
-Plug 'mxw/vim-jsx'
-Plug 'elzr/vim-json'
-Plug 'Valloric/MatchTagAlways'
+"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+"Plug 'mhartington/nvim-typescript'
+"Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+"Plug 'Quramy/tsuquyomi'
+"Plug 'pangloss/vim-javascript'
+" File Control / Formatting
+Plug 'scrooloose/nerdcommenter'
 Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
-Plug 'joshdick/onedark.vim'
-Plug 'lifepillar/vim-solarized8'
-Plug 'altercation/vim-colors-solarized'
-Plug 'liuchengxu/space-vim-dark'
-Plug 'chriskempson/base16-vim'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'vim-airline/vim-airline-themes' 
+"Plug 'vim-syntastic/syntastic'
+
+" Git
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
+
+" JavaScript
+Plug 'prettier/vim-prettier', { 'do': 'npm install' }
+
+" Markdown
+Plug 'gabrielelana/vim-markdown'
+
+" Snippets
+"Plug 'Shougo/neosnippet.vim'
+"Plug 'Shougo/neosnippet-snippets'
+
+" TypeScript
+Plug 'leafgarland/typescript-vim'
+Plug 'ianks/vim-tsx'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-emmet', 'coc-tslint']
+"Plug 'HerringtonDarkholme/yats.vim'
+"Plug 'maxmellon/vim-jsx-pretty'
+
+" Colorscheme
+Plug 'morhetz/gruvbox'
+
 call plug#end()
 
 
@@ -67,12 +83,9 @@ set noswapfile
 set nobackup
 set nowb
 
-"Match tags always config
-let g:mta_use_matchparen_group = 1
-let g:mta_filetypes = { 'html' :1,'xhtml' :1,'xml' :1, 'js' :1,'javascript.jsx': 1}
 
 " DEOPLETE
-let g:deoplete#enable_at_startup = 1"
+let g:deoplete#enable_at_startup = 1
 
 " FZF configuration
 let g:fzf_layout = {'down': '~20%'}
@@ -81,25 +94,20 @@ let g:fzf_layout = {'down': '~20%'}
 map <C-b> :NERDTreeToggle<CR>
 
 " Airline config
-let g:airline_theme='luna'
+let g:airline_theme='gruvbox'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
-
 
 set path+=**
 
 let mapleader = ","
 noremap <leader>t :FZF<CR>
 inoremap jk <Esc>
-
+let g:prettier#autoformat = 0
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
 nnoremap <C-n> :bnext<CR>
 nnoremap <C-p> :bprevious<CR>
 nnoremap j gj
-set t_8f=^[[38;2;%lu;%lu;%lum  " Needed in tmux
-set t_8b=^[[48;2;%lu;%lu;%lum  " Ditto
 nnoremap k gk
-let g:solarized_termcolors=16
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-set termguicolors
-set background=dark
-colorscheme solarized8_dark_flat
+set t_Co=256
+colorscheme gruvbox
