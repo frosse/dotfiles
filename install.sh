@@ -17,3 +17,6 @@ if [ ! -d $AFTER_DIR ]; then
   mkdir $AFTER_DIR
 fi
 ln -svf $BASEDIR/nvim/after/plugin/* $AFTER_DIR
+
+#i3
+ln -svf $BASEDIR/i3/config ~/.config/i3/config
