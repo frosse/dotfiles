@@ -17,7 +17,7 @@
     :config
          (load-theme 'gruvbox-dark-medium t)
     :ensure t)
-(set-face-attribute 'default nil :font "FiraCode Nerd Font Mono" :height 100)
+(set-face-attribute 'default nil :font "Fira Code Retina" :height 100)
 
 (use-package all-the-icons)
 
@@ -96,7 +96,7 @@ Not in use
 
 (use-package which-key
   :config
-    (setq which-key-idle-delay 0.3)
+    (setq which-key-idle-delay 0.5)
     (setq which-key-popup-type 'frame)
     (which-key-mode)
     (which-key-setup-minibuffer)
@@ -142,3 +142,12 @@ Not in use
   :config
   (evil-collection-init))
 #+END_SRC
+
+* Docker
+#+BEGIN_SRC emacs-lisp
+(use-package docker-tramp)
+#+END_SRC
+* Random
+  #+BEGIN_SRC emacs-lisp
+  (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
+  #+END_SRC
