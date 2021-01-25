@@ -1,0 +1,144 @@
+#+STARTUP Tweaks
+* UI
+
+#+BEGIN_SRC emacs-lisp
+
+(setq inhibit-startup-message t)
+
+(scroll-bar-mode -1)
+(tool-bar-mode -1)
+(menu-bar-mode -1)
+(set-fringe-mode 10)
+(global-display-line-numbers-mode)
+
+(setq display-line-numbers-type 'relative)
+
+(use-package gruvbox-theme
+    :config
+         (load-theme 'gruvbox-dark-medium t)
+    :ensure t)
+(set-face-attribute 'default nil :font "FiraCode Nerd Font Mono" :height 100)
+
+(use-package all-the-icons)
+
+(use-package doom-modeline
+  :ensure t
+  :init (doom-modeline-mode 1)
+  :custom ((doom-modeline-height 15)))
+#+END_SRC
+
+#+RESULTS:
+
+* Helm
+Not in use
+#+BEGIN_SRC text
+(use-package helm
+  :init
+    (require 'helm-config)
+    (setq helm-split-window-in-side-p t
+          helm-move-to-line-cycle-in-source t)
+  :config
+    (helm-mode 1) ;; Most of Emacs prompts become helm-enabled
+    (helm-autoresize-mode 1) ;; Helm resizes according to the number of candidates
+    (global-set-key (kbd "C-x b") 'helm-buffers-list) ;; List buffers ( Emacs way )
+    (define-key evil-ex-map "b" 'helm-buffers-list) ;; List buffers ( Vim way )
+    (global-set-key (kbd "C-x r b") 'helm-bookmarks) ;; Bookmarks menu
+    (global-set-key (kbd "C-x C-f") 'helm-find-files) ;; Finding files with Helm
+    (global-set-key (kbd "M-c") 'helm-calcul-expression) ;; Use Helm for calculations
+    (global-set-key (kbd "C-s") 'helm-occur)  ;; Replaces the default isearch keybinding
+    (global-set-key (kbd "C-h a") 'helm-apropos)  ;; Helmized apropos interface
+    (global-set-key (kbd "M-x") 'helm-M-x)  ;; Improved M-x menu
+    (global-set-key (kbd "M-y") 'helm-show-kill-ring)  ;; Show kill ring, pick something to paste
+  :ensure t)
+#+END_SRC
+
+* Ivy
+
+  #+BEGIN_SRC emacs-lisp
+(use-package ivy
+  :diminish
+  :bind (("C-s" . swiper)
+         :map ivy-minibuffer-map
+         ("TAB" . ivy-alt-done)	
+         ("C-l" . ivy-alt-done)
+         ("C-j" . ivy-next-line)
+         ("C-k" . ivy-previous-line)
+         :map ivy-switch-buffer-map
+         ("C-k" . ivy-previous-line)
+         ("C-l" . ivy-done)
+         ("C-d" . ivy-switch-buffer-kill)
+         :map ivy-reverse-i-search-map
+         ("C-k" . ivy-previous-line)
+         ("C-d" . ivy-reverse-i-search-kill))
+  :config
+  (ivy-mode 1))
+
+ (use-package ivy-rich
+  :init
+  (ivy-rich-mode 1))
+
+  #+END_SRC
+
+* Counsel
+  #+BEGIN_SRC emacs-lisp
+
+(use-package counsel
+  :bind (("M-x" . counsel-M-x)
+         ("C-x b" . counsel-ibuffer)
+         ("C-x C-f" . counsel-find-file)
+         :map minibuffer-local-map
+         ("C-r" . 'counsel-minibuffer-history)))
+
+#+END_SRC
+
+* Which-key
+#+BEGIN_SRC emacs-lisp
+
+(use-package which-key
+  :config
+    (setq which-key-idle-delay 0.3)
+    (setq which-key-popup-type 'frame)
+    (which-key-mode)
+    (which-key-setup-minibuffer)
+    (set-face-attribute 'which-key-local-map-description-face nil
+       :weight 'bold)
+  :ensure t)
+#+END_SRC
+
+* Magit
+
+#+BEGIN_SRC emacs-lisp
+(use-package magit
+  :ensure t)
+#+END_SRC
+
+* Key-chord
+#+BEGIN_SRC emacs-lisp
+(use-package key-chord
+   :ensure t)
+(key-chord-mode 1)
+(key-chord-define evil-insert-state-map "jk" 'evil-normal-state)
+
+#+END_SRC
+
+#+RESULTS:
+: evil-normal-state
+
+* ORG
+** Babel
+#+BEGIN_SRC emacs-lisp
+(org-babel-do-load-languages 'org-babel-load-languages
+    '(
+        (shell . t)
+    )
+)
+#+END_SRC
+
+#+RESULTS:
+* Evil
+#+BEGIN_SRC emacs-lisp
+(use-package evil-collection
+  :after evil
+  :config
+  (evil-collection-init))
+#+END_SRC
