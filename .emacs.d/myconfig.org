@@ -1,4 +1,3 @@
-#+STARTUP Tweaks
 * UI
 #+BEGIN_SRC emacs-lisp
 
