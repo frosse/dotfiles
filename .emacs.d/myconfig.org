@@ -1,3 +1,4 @@
+#+STARTUP Tweaks
 * UI
 #+BEGIN_SRC emacs-lisp
 
@@ -264,6 +265,10 @@ Not in use
 
     #+begin_src emacs-lisp
         (use-package dap-mode :after lsp-mode :config (dap-auto-configure-mode))
+    ;; Thanks reddit 
+    ;; Add color formatting to *compilation* buffer
+    (add-hook 'compilation-filter-hook
+    (lambda () (ansi-color-apply-on-region (point-min) (point-max))))
     #+end_src
 
 ** Java
@@ -272,12 +277,17 @@ Not in use
       :init
         (setq lsp-java-vmargs (list "-javaagent:/home/frosse/.m2/repository/org/projectlombok/lombok/1.18.16/lombok-1.18.16.jar"
          ))
-(use-package lsp-java 
-    :config (add-hook 'java-mode-hook 'lsp))
-    (setq lsp-java-format-settings-url "https://raw.githubusercontent.com/google/styleguide/gh-pages/eclipse-java-google-style.xml")
-(setq lsp-java-format-settings-profile "GoogleStyle")
-(add-hook 'java-mode-hook (defun my-set-java-tab-width () (setq tab-width 2)))  
+    (use-package lsp-java 
+        :config (add-hook 'java-mode-hook 'lsp))
+        (setq lsp-java-format-settings-url "https://raw.githubusercontent.com/google/styleguide/gh-pages/eclipse-java-google-style.xml")
+        (setq lsp-java-format-settings-profile "GoogleStyle")
+        (add-hook 'java-mode-hook (defun my-set-java-tab-width () (setq tab-width 2)))  
     (use-package dap-java :ensure nil)
+    (require 'lsp-java-boot)
+
+    ;; to enable the lenses
+    (add-hook 'lsp-mode-hook #'lsp-lens-mode)
+    (add-hook 'java-mode-hook #'lsp-java-boot-lens-mode)
     #+end_src
 * Snippets
     #+begin_src emacs-lisp
