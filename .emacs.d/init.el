@@ -24,7 +24,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(evil-magit projectile vterm docker-tramp evil-collection key-chord magit which-key counsel ivy-rich ivy doom-modeline all-the-icons use-package gruvbox-theme evil)))
+   '(json-mode tide flycheck company typescript-mode rust-mode lsp-rust general evil-magit projectile vterm docker-tramp evil-collection key-chord magit which-key counsel ivy-rich ivy doom-modeline all-the-icons use-package gruvbox-theme evil)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

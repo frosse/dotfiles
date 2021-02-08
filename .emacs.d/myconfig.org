@@ -33,29 +33,6 @@
 #+END_SRC
 #+RESULTS:
 
-* Helm
-Not in use
-#+BEGIN_SRC text
-(use-package helm
-  :init
-    (require 'helm-config)
-    (setq helm-split-window-in-side-p t
-          helm-move-to-line-cycle-in-source t)
-  :config
-    (helm-mode 1) ;; Most of Emacs prompts become helm-enabled
-    (helm-autoresize-mode 1) ;; Helm resizes according to the number of candidates
-    (global-set-key (kbd "C-x b") 'helm-buffers-list) ;; List buffers ( Emacs way )
-    (define-key evil-ex-map "b" 'helm-buffers-list) ;; List buffers ( Vim way )
-    (global-set-key (kbd "C-x r b") 'helm-bookmarks) ;; Bookmarks menu
-    (global-set-key (kbd "C-x C-f") 'helm-find-files) ;; Finding files with Helm
-    (global-set-key (kbd "M-c") 'helm-calcul-expression) ;; Use Helm for calculations
-    (global-set-key (kbd "C-s") 'helm-occur)  ;; Replaces the default isearch keybinding
-    (global-set-key (kbd "C-h a") 'helm-apropos)  ;; Helmized apropos interface
-    (global-set-key (kbd "M-x") 'helm-M-x)  ;; Improved M-x menu
-    (global-set-key (kbd "M-y") 'helm-show-kill-ring)  ;; Show kill ring, pick something to paste
-  :ensure t)
-#+END_SRC
-
 * Ivy
 
   #+BEGIN_SRC emacs-lisp
@@ -110,6 +87,7 @@ Not in use
 #+END_SRC
 
 * ORG
+
   #+begin_src emacs-lisp
 (defun efs/org-mode-setup ()
     (org-indent-mode)
@@ -133,7 +111,7 @@ Not in use
         (org-bullets-bullet-list '("◉" "○" "●" "○" "●" "○" "●")))
 
 (defun efs/org-mode-visual-fill ()
-    (setq visual-fill-column-width 100
+    (setq visual-fill-column-width 150
         visual-fill-column-center-text t)
     (visual-fill-column-mode 1))
 
@@ -141,6 +119,7 @@ Not in use
     :hook (org-mode . efs/org-mode-visual-fill))
 
   #+end_src
+
 ** Babel
 #+begin_src emacs-lisp
   (org-babel-do-load-languages
@@ -148,6 +127,7 @@ Not in use
   '((emacs-lisp . t)
     (python . t))) 
 #+end_src
+
 * Evil
 
 #+BEGIN_SRC emacs-lisp
@@ -289,7 +269,41 @@ Not in use
     (add-hook 'lsp-mode-hook #'lsp-lens-mode)
     (add-hook 'java-mode-hook #'lsp-java-boot-lens-mode)
     #+end_src
+
+** Rust
+#+begin_src emacs-lisp
+(use-package rust-mode)
+#+end_src
+
+** TypeScript 
+#+begin_src emacs-lisp
+(use-package company)
+(use-package flycheck)
+(defun setup-tide-mode ()
+ (interactive)
+ (tide-setup)
+ (flycheck-mode +1)
+ (setq flycheck-check-syntax-automatically '(save mode-enabled))
+ (eldoc-mode +1)
+ (company-mode +1))
+(setq company-tooltip-align-annotations t)
+(add-hook 'typescript-mode-hook #'setup-tide-mode)
+#+end_src
 * Snippets
     #+begin_src emacs-lisp
         (use-package yasnippet :config (yas-global-mode))
     #+end_src
+* General
+#+begin_src emacs-lisp
+(use-package general
+  :config
+  (general-create-definer leader-keys
+    :keymaps '(normal visual emacs)
+    :prefix "SPC"
+    :global-prefix "C-SPC")
+
+  (leader-keys
+    "a"  'org-agenda
+    "s" 'shell))
+#+end_src
+
