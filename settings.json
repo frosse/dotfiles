@@ -1,0 +1,70 @@
+{
+    "workbench.colorTheme": "Gruvbox Dark Hard",
+    "editor.fontFamily": "'cascadia code'",
+    "workbench.sideBar.location": "right",
+    "files.autoSave": "onWindowChange",
+    "editor.renderWhitespace": "trailing",
+    "editor.accessibilitySupport": "off",
+    "workbench.iconTheme": "material-icon-theme",
+    "workbench.tree.indent": 6,
+    "workbench.tree.renderIndentGuides": "always",
+    "terminal.explorerKind": "external",
+    "terminal.external.linuxExec": "alacritty",
+    "vim.surround": true,
+    "vim.insertModeKeyBindings": [
+        {
+            "before": [
+                "j",
+                "k"
+            ],
+            "after": [
+                "<Esc>"
+            ]
+        }
+    ],
+    "vim.normalModeKeyBindings": [
+        {
+            "before": [
+                "<leader>",
+                ";"
+            ],
+            "commands": [
+                "workbench.action.showCommands"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "t"
+            ],
+            "commands": [
+                "workbench.action.quickOpen"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "m"
+            ],
+            "commands": [
+                "editor.action.toggleMinimap"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "b"
+            ],
+            "commands": [
+                "workbench.action.toggleSidebarVisibility"
+            ]
+        }
+    ],
+    "vim.leader": "<space>",
+    "editor.codeActionsOnSave": null,
+    "window.menuBarVisibility": "toggle",
+    "editor.overviewRulerBorder": false,
+    "editor.minimap.renderCharacters": false,
+    "editor.minimap.enabled": false,
+    "typescript.updateImportsOnFileMove.enabled": "always"
+}
