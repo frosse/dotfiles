@@ -4,7 +4,9 @@ let mapleader = " "
 map <C-b> :NERDTreeToggle<CR>
 
 
-let g:user_emmet_expandabbr_key = '<leader>em'
+let g:user_emmet_mode="n"
+let g:user_emmet_leader_key=","
+map <C-b> :NERDTreeToggle<CR>
 nnoremap <leader>t :GitFiles<CR>
 nnoremap <leader>b :Buffers<CR>
 " COC
@@ -12,9 +14,6 @@ nmap <Leader>gd <Plug>(coc-definition)
 nmap <Leader>gy <Plug>(coc-type-definition)
 nmap <Leader>gi <Plug>(coc-implementation)
 nmap <Leader>gr <Plug>(coc-references)
-"nnoremap <silent> <leader>gd :YcmCompleter GoTo<CR>
-"nnoremap <silent> <leader>gr :YcmCompleter GoToReferences<CR>
-"nmap <leader>gh <plug>(YCMHover)
 " Snippets
 imap <C-l> <Plug>(coc-snippets-expand)
 
@@ -22,11 +21,14 @@ imap <C-l> <Plug>(coc-snippets-expand)
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 
+
 nnoremap <C-n> :bnext<CR>
 nnoremap <C-p> :bprevious<CR>
 noremap j gj
 noremap k gk
 inoremap jk <Esc>
+noremap <leader>t :FZF<CR>
+
 
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>

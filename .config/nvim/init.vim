@@ -1,41 +1,39 @@
 call plug#begin()
 
 Plug 'scrooloose/nerdtree'
-"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-"Plug 'mhartington/nvim-typescript'
-"Plug 'Shougo/vimproc.vim', {'do' : 'make'}
-"Plug 'Quramy/tsuquyomi'
-"Plug 'pangloss/vim-javascript'
-" File Control / Formatting
 Plug 'scrooloose/nerdcommenter'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes' 
-"Plug 'vim-syntastic/syntastic'
 
-" Git
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
 
-" JavaScript
 Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 
-" Markdown
 Plug 'gabrielelana/vim-markdown'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 
-" Snippets
-"Plug 'Shougo/neosnippet.vim'
-"Plug 'Shougo/neosnippet-snippets'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'epilande/vim-react-snippets'
 
-" TypeScript
 Plug 'leafgarland/typescript-vim'
 Plug 'ianks/vim-tsx'
+Plug 'maxmellon/vim-jsx-pretty'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-emmet', 'coc-tslint']
-"Plug 'HerringtonDarkholme/yats.vim'
-"Plug 'maxmellon/vim-jsx-pretty'
 
-" Colorscheme
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+
+Plug 'jiangmiao/auto-pairs'
+
+Plug 'mattn/emmet-vim'
+
 Plug 'morhetz/gruvbox'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+"let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-eslint', 'coc-java' ]
 
 call plug#end()
 
@@ -43,8 +41,8 @@ call plug#end()
 filetype plugin indent on
 syntax on
 set title
-set number
-set relativenumber
+set nonumber
+set norelativenumber
 set history=500
 set showcmd
 set noshowmode
@@ -64,50 +62,34 @@ set listchars=tab:\ \ ,trail:·
 set list
 set lazyredraw
 set hidden
-
-" Indentation
 set shiftwidth=2
 set softtabstop=2
 set tabstop=2
 set expandtab
 set smartindent
 set nofoldenable
-
-"Scrolling
 set scrolloff=8
 set sidescrolloff=15
 set sidescroll=5
-
-" Turn of Swap
 set noswapfile
 set nobackup
 set nowb
-
-
-" DEOPLETE
-let g:deoplete#enable_at_startup = 1
-
-" FZF configuration
-let g:fzf_layout = {'down': '~20%'}
-
-" Plugin shortcuts
-map <C-b> :NERDTreeToggle<CR>
-
-" Airline config
-let g:airline_theme='gruvbox'
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
-
+set shortmess=aFc
 set path+=**
-
-let mapleader = ","
-noremap <leader>t :FZF<CR>
-inoremap jk <Esc>
-let g:prettier#autoformat = 0
-autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
-nnoremap <C-n> :bnext<CR>
-nnoremap <C-p> :bprevious<CR>
-nnoremap j gj
-nnoremap k gk
+set termguicolors
+set background=dark
 set t_Co=256
+
+
 colorscheme gruvbox
+" Markdown preview
+let g:mkdp_browser = 'firefox'
+
+let NERDTreeWinPos = 'right'
+
+let g:user_emmet_mode="n"
+let g:user_emmet_leader_key=","
+
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.vue,*.yaml,*.html PrettierAsync
+
+
