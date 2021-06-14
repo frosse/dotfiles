@@ -20,7 +20,7 @@ Plug 'epilande/vim-react-snippets'
 Plug 'leafgarland/typescript-vim'
 Plug 'ianks/vim-tsx'
 Plug 'maxmellon/vim-jsx-pretty'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -32,8 +32,13 @@ Plug 'mattn/emmet-vim'
 Plug 'morhetz/gruvbox'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-
 "let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-eslint', 'coc-java' ]
+
+"
+" LSP TEST 
+"
+Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/nvim-compe'
 
 call plug#end()
 
@@ -92,4 +97,18 @@ let g:user_emmet_leader_key=","
 
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.vue,*.yaml,*.html PrettierAsync
 
+let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
+set completeopt=menuone,noselect
+
+let g:compe = {}
+let g:compe.enabled = v:true
+let g:compe.source = {
+  \ 'path': v:true,
+  \ 'buffer': v:true,
+  \ 'nvim_lsp': v:true,
+  \ }
+
+lua require'lspconfig'.tsserver.setup{ on_attach=require'compe'.on_attach }
+
+lua require'lspconfig'.java_language_server.setup{on_attach=require'compe'.on_attach}
 
