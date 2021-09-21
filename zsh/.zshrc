@@ -27,4 +27,7 @@ prompt_context() {
   fi
 }
 
+export PATH=$PATH:/usr/local/go/bin
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

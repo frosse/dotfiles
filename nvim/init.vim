@@ -20,7 +20,6 @@ Plug 'epilande/vim-react-snippets'
 Plug 'leafgarland/typescript-vim'
 Plug 'ianks/vim-tsx'
 Plug 'maxmellon/vim-jsx-pretty'
-"Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -32,11 +31,14 @@ Plug 'mattn/emmet-vim'
 Plug 'morhetz/gruvbox'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-"let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-eslint', 'coc-java' ]
 
-"
+Plug 'kyazdani42/nvim-web-devicons' " for file icons
+Plug 'kyazdani42/nvim-tree.lua'
+
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+
 " LSP TEST 
-"
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/nvim-compe'
 
@@ -95,7 +97,7 @@ let NERDTreeWinPos = 'right'
 let g:user_emmet_mode="n"
 let g:user_emmet_leader_key=","
 
-autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.vue,*.yaml,*.html PrettierAsync
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.graphql,*.vue,*.yaml,*.html PrettierAsync
 
 let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
 set completeopt=menuone,noselect
@@ -110,5 +112,21 @@ let g:compe.source = {
 
 lua require'lspconfig'.tsserver.setup{ on_attach=require'compe'.on_attach }
 
-lua require'lspconfig'.java_language_server.setup{on_attach=require'compe'.on_attach}
+lua require'lspconfig'.rust_analyzer.setup{}
 
+lua <<EOF
+  lspconfig = require "lspconfig"
+  lspconfig.gopls.setup {
+    cmd = {"gopls", "serve"},
+    settings = {
+      gopls = {
+        analyses = {
+          unusedparams = true,
+        },
+        staticcheck = true,
+      },
+    },
+  }
+EOF
+
+let g:nvim_tree_side = 'right'
