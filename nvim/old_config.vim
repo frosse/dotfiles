@@ -26,8 +26,6 @@ Plug 'junegunn/fzf.vim'
 
 Plug 'jiangmiao/auto-pairs'
 
-Plug 'mattn/emmet-vim'
-
 Plug 'morhetz/gruvbox'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -92,11 +90,6 @@ colorscheme gruvbox
 " Markdown preview
 let g:mkdp_browser = 'firefox'
 
-let NERDTreeWinPos = 'right'
-
-let g:user_emmet_mode="n"
-let g:user_emmet_leader_key=","
-
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.graphql,*.vue,*.yaml,*.html PrettierAsync
 
 let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
@@ -109,24 +102,5 @@ let g:compe.source = {
   \ 'buffer': v:true,
   \ 'nvim_lsp': v:true,
   \ }
-
-lua require'lspconfig'.tsserver.setup{ on_attach=require'compe'.on_attach }
-
-lua require'lspconfig'.rust_analyzer.setup{}
-
-lua <<EOF
-  lspconfig = require "lspconfig"
-  lspconfig.gopls.setup {
-    cmd = {"gopls", "serve"},
-    settings = {
-      gopls = {
-        analyses = {
-          unusedparams = true,
-        },
-        staticcheck = true,
-      },
-    },
-  }
-EOF
 
 let g:nvim_tree_side = 'right'
