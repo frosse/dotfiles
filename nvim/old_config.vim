@@ -7,8 +7,10 @@ Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
+Plug 'alvan/vim-closetag'
 
-Plug 'prettier/vim-prettier', { 'do': 'npm install' }
+Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
+Plug 'nvim-treesitter/playground'
 
 Plug 'gabrielelana/vim-markdown'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
@@ -21,24 +23,47 @@ Plug 'leafgarland/typescript-vim'
 Plug 'ianks/vim-tsx'
 Plug 'maxmellon/vim-jsx-pretty'
 
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-
 Plug 'jiangmiao/auto-pairs'
 
 Plug 'morhetz/gruvbox'
+Plug 'mofiqul/dracula.nvim'
+Plug 'arzg/vim-colors-xcode'
+Plug 'sainnhe/everforest'
+Plug 'arcticicestudio/nord-vim'
+Plug 'cocopon/iceberg.vim'
+Plug 'NLKNguyen/papercolor-theme'
+
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 Plug 'kyazdani42/nvim-web-devicons' " for file icons
 Plug 'kyazdani42/nvim-tree.lua'
 
+" Telescope
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+Plug 'nvim-telescope/telescope-file-browser.nvim'
 
 " LSP TEST 
 Plug 'neovim/nvim-lspconfig'
-Plug 'hrsh7th/nvim-compe'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'onsails/lspkind-nvim'
+Plug 'L3MON4D3/LuaSnip'
+Plug 'saadparwaiz1/cmp_luasnip'
+
+" Rust
+Plug 'simrat39/rust-tools.nvim'
+
+"SQL
+Plug 'nanotee/sqls.nvim'
+
+
+" Formatting
+Plug 'sbdchd/neoformat'
 
 call plug#end()
 
@@ -46,8 +71,8 @@ call plug#end()
 filetype plugin indent on
 syntax on
 set title
-set nonumber
-set norelativenumber
+set number
+set relativenumber
 set history=500
 set showcmd
 set noshowmode
@@ -56,7 +81,7 @@ set gcr=a:blinkon500-blinkwait500-blinkoff500
 set cursorline
 set smartcase
 set ignorecase
-set mouse=r
+set mouse=a
 set showmatch
 set nostartofline
 set timeoutlen=1000 ttimeoutlen=0
@@ -81,26 +106,12 @@ set nobackup
 set nowb
 set shortmess=aFc
 set path+=**
-set termguicolors
+set encoding=UTF-8
 set background=dark
-set t_Co=256
 
-
-colorscheme gruvbox
+set termguicolors
+colorscheme everforest
 " Markdown preview
 let g:mkdp_browser = 'firefox'
 
-autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.graphql,*.vue,*.yaml,*.html PrettierAsync
 
-let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
-set completeopt=menuone,noselect
-
-let g:compe = {}
-let g:compe.enabled = v:true
-let g:compe.source = {
-  \ 'path': v:true,
-  \ 'buffer': v:true,
-  \ 'nvim_lsp': v:true,
-  \ }
-
-let g:nvim_tree_side = 'right'
