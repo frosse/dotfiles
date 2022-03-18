@@ -108,6 +108,7 @@ set shortmess=aFc
 set path+=**
 set encoding=UTF-8
 set background=dark
+set clipboard=unnamedplus
 
 set termguicolors
 colorscheme everforest
@@ -115,3 +116,5 @@ colorscheme everforest
 let g:mkdp_browser = 'firefox'
 
 
+lua require("frosse.telescope")
+nnoremap <C-_> <cmd>lua require("frosse.telescope").current_buffer() <cr>
