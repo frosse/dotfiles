@@ -12,8 +12,7 @@ Plug 'alvan/vim-closetag'
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
 Plug 'nvim-treesitter/playground'
 
-Plug 'gabrielelana/vim-markdown'
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+Plug 'ellisonleao/glow.nvim'
 
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
@@ -44,6 +43,7 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'nvim-telescope/telescope-file-browser.nvim'
+Plug 'nvim-telescope/telescope-project.nvim'
 
 " LSP TEST 
 Plug 'neovim/nvim-lspconfig'
@@ -109,12 +109,8 @@ set path+=**
 set encoding=UTF-8
 set background=dark
 set clipboard=unnamedplus
+set laststatus=3
 
 set termguicolors
 colorscheme everforest
-" Markdown preview
-let g:mkdp_browser = 'firefox'
 
-
-lua require("frosse.telescope")
-nnoremap <C-_> <cmd>lua require("frosse.telescope").current_buffer() <cr>

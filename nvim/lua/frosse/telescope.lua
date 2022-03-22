@@ -1,14 +1,20 @@
 
+
 -- Telescope Setup
-require('telescope').setup{
-  defaults = {
-      prompt_prefix = "$ ",
-  }
-}
+require('telescope').setup({
+    extensions = {
+      project = {
+        base_dirs = {
+          "~/dev",
+        },
+        max_depth = 4
+      },
+    },
+})
 
 require('telescope').load_extension('fzf')
 require('telescope').load_extension('file_browser')
-
+require('telescope').load_extension('project')
 
 local mappings = {}
 mappings.current_buffer = function() 

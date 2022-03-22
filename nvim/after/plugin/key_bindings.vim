@@ -19,8 +19,10 @@ inoremap jk <Esc>
 
 nnoremap <C-b> :NvimTreeToggle<CR>
 
+
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
-
+nnoremap <leader>pp <cmd>Telescope project<cr>
+nnoremap <C-_> <cmd>lua require("frosse.telescope").current_buffer() <cr>
