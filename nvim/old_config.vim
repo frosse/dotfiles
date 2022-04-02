@@ -31,6 +31,7 @@ Plug 'sainnhe/everforest'
 Plug 'arcticicestudio/nord-vim'
 Plug 'cocopon/iceberg.vim'
 Plug 'NLKNguyen/papercolor-theme'
+Plug 'catppuccin/nvim', {'as': 'catppuccin'}
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -64,6 +65,9 @@ Plug 'nanotee/sqls.nvim'
 
 " Formatting
 Plug 'sbdchd/neoformat'
+
+Plug 'vim-test/vim-test'
+Plug 'rcarriga/vim-ultest', { 'do': ':UpdateRemotePlugins' }
 
 call plug#end()
 
@@ -112,5 +116,8 @@ set clipboard=unnamedplus
 set laststatus=3
 
 set termguicolors
+
+let mapleader =" "
+
 colorscheme everforest
 
