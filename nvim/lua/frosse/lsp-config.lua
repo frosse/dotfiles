@@ -92,7 +92,6 @@ if not configs.golangcilsp then
  	configs.golangcilsp = {
 		default_config = {
 			cmd = {'golangci-lint-langserver'},
-            -- make rootdir .golangcilint with config for linter
 			root_dir = nvim_lsp.util.root_pattern('.git', 'go.mod'),
 			init_options = {
 					command = { "golangci-lint", "run", "--enable-all", "--disable", "lll", "--out-format", "json" };
@@ -104,6 +103,9 @@ end
 nvim_lsp.sqls.setup({
     on_attach = function(client, bufnr)
       on_attach()
+      vim.keymap.set("v", "<leader>qr", "<cmd>SqlsExecuteQuery<cr>", {buffer=0})
+      vim.keymap.set("v", "<leader>qv", "<cmd>SqlsExecuteQueryVertical<cr>", {buffer=0})
+      vim.keymap.set("n", "<leader>qc", "<cmd>SqlsSwitchConnection<cr>", {buffer=0})
       require('sqls').on_attach(client, bufnr)
     end,
     capabilities = capabilities

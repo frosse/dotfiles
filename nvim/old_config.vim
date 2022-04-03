@@ -1,9 +1,6 @@
 call plug#begin()
 
-Plug 'scrooloose/nerdtree'
-Plug 'scrooloose/nerdcommenter'
-
-Plug 'airblade/vim-gitgutter'
+"Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
@@ -46,7 +43,7 @@ Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'nvim-telescope/telescope-file-browser.nvim'
 Plug 'nvim-telescope/telescope-project.nvim'
 
-" LSP TEST 
+" LSP
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-nvim-lsp'
@@ -56,18 +53,24 @@ Plug 'onsails/lspkind-nvim'
 Plug 'L3MON4D3/LuaSnip'
 Plug 'saadparwaiz1/cmp_luasnip'
 
-" Rust
+"Rust
 Plug 'simrat39/rust-tools.nvim'
 
 "SQL
 Plug 'nanotee/sqls.nvim'
 
-
-" Formatting
+"Formatting
 Plug 'sbdchd/neoformat'
 
+"Unit test
 Plug 'vim-test/vim-test'
 Plug 'rcarriga/vim-ultest', { 'do': ':UpdateRemotePlugins' }
+
+Plug 'folke/which-key.nvim'
+
+Plug 'lewis6991/gitsigns.nvim'
+
+Plug 'sindrets/diffview.nvim'
 
 call plug#end()
 
@@ -119,5 +122,5 @@ set termguicolors
 
 let mapleader =" "
 
-colorscheme everforest
+colorscheme catppuccin
 
