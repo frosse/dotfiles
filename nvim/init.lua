@@ -1,7 +1,9 @@
-vim.cmd(':so $HOME/.config/nvim/old_config.vim')
+require('frosse.options')
+require('frosse.packer')
 require('frosse.lsp-config')
 require('frosse.telescope')
 require('frosse.luasnippet')
+require('frosse.lualine')
 
 require'nvim-treesitter.configs'.setup { ensure_installed = "maintained", highlight = { enable = true } }
 
