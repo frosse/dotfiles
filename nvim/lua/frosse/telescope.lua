@@ -5,7 +5,6 @@ require('telescope').setup({
     extensions = {
       project = {
         base_dirs = {
-          "~/dev",
         },
         max_depth = 4
       },

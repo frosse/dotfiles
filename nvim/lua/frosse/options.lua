@@ -16,11 +16,19 @@ vim.opt.linebreak = true
 vim.opt.list = true
 vim.opt.lazyredraw = true
 vim.opt.hidden = true
-vim.opt.shiftwidth = 2
-vim.opt.softtabstop = 2
-vim.opt.tabstop = 2
+
+vim.opt.shiftwidth = 4
+vim.opt.softtabstop = 4
+vim.opt.tabstop = 4
 vim.opt.expandtab = true
+
 vim.opt.smartindent = true
+
+vim.opt.hlsearch = false
+
+vim.opt.colorcolumn = "80"
+vim.opt.updatetime = 50
+
 vim.opt.scrolloff = 8
 vim.opt.sidescrolloff = 15
 vim.opt.sidescroll = 5
@@ -37,8 +45,15 @@ vim.opt.completeopt = {"menu", "menuone", "noselect"}
 vim.opt.listchars = {
  tab= "\\ \\" ,trail= "·" }
 
-vim.g.vscode_style = "dark"
-vim.g.vscode_transparent = 1
-vim.g.vscode_italic_comment = 1
-vim.g.vscode_disable_nvimtree_bg = true
-vim.cmd([[colorscheme vscode]])
+vim.g.mapleader = " "
+vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+
+vim.keymap.set("n", "n", "nzzzv")
+vim.keymap.set("n", "N", "Nzzzv")
+
+vim.keymap.set("x", "<leader>p", "\"_dP")
+
+vim.keymap.set("n", "Q", "<nop>")
