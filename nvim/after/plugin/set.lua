@@ -8,9 +8,9 @@ vim.opt.gcr = "a:blinkon500-blinkwait500-blinkoff500"
 vim.opt.cursorline = true
 vim.opt.smartcase = true
 vim.opt.ignorecase = true
-vim.opt.mouse="a"
+vim.opt.mouse = "a"
 vim.opt.showmatch = true
-vim.opt.fileencoding="utf-8"
+vim.opt.fileencoding = "utf-8"
 vim.opt.wrap = true
 vim.opt.linebreak = true
 vim.opt.list = true
@@ -23,9 +23,9 @@ vim.opt.tabstop = 4
 vim.opt.expandtab = true
 
 vim.opt.smartindent = true
+vim.opt.guicursor = "n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20"
 
 vim.opt.hlsearch = false
-
 vim.opt.colorcolumn = "80"
 vim.opt.updatetime = 50
 
@@ -35,18 +35,18 @@ vim.opt.sidescroll = 5
 vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.wb = false
-vim.opt.shortmess="aFc"
-vim.opt.path:append "**"
+vim.opt.shortmess = "aFc"
+vim.opt.path:append("**")
 vim.opt.encoding = "UTF-8"
 vim.opt.background = "dark"
 vim.opt.clipboard = "unnamedplus"
 vim.opt.laststatus = 3
-vim.opt.completeopt = {"menu", "menuone", "noselect"}
+vim.opt.completeopt = { "menu", "menuone", "noselect" }
 vim.opt.listchars = {
- tab= "\\ \\" ,trail= "·" }
-
-vim.g.mapleader = " "
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+	tab = ">-",
+	trail = "~",
+	nbsp = "␣",
+}
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
@@ -54,6 +54,11 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
-vim.keymap.set("x", "<leader>p", "\"_dP")
+vim.keymap.set("x", "<leader>p", '"_dP')
 
+vim.keymap.set("i", "jk", "<Esc>")
 vim.keymap.set("n", "Q", "<nop>")
+vim.opt.termguicolors = true
+-- Save undo history
+vim.o.undofile = true
+vim.cmd.colorscheme("catppuccin-macchiato")

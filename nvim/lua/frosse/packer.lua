@@ -1,77 +1,95 @@
-vim.cmd [[packadd packer.nvim]]
+vim.cmd([[packadd packer.nvim]])
 
-return require('packer').startup(function(use)
-  use "wbthomason/packer.nvim"
-  use "williamboman/mason.nvim"
+return require("packer").startup(function(use)
+	-- Packer can manage itself
+	use("wbthomason/packer.nvim")
 
-  use "nvim-lua/popup.nvim"
-  use "nvim-lua/plenary.nvim"
+	use({
+		"nvim-telescope/telescope.nvim",
+		tag = "0.1.1",
+		requires = { { "nvim-lua/plenary.nvim" } },
+	})
 
-  use { 'tpope/vim-fugitive' }
-  use { 'tpope/vim-commentary' }
-  use {'tpope/vim-surround'}
-  use { 'nvim-treesitter/nvim-treesitter' , run = ':TSUpdate' }
-  use { 'nvim-treesitter/playground' }
+	use({ "rose-pine/neovim", as = "rose-pine" })
+	use({ "catppuccin/nvim", as = "catppuccin" })
 
+	use("nvim-treesitter/nvim-treesitter", { run = ":TSUpdate" })
 
-  use { 'SirVer/ultisnips' }
-  use {'honza/vim-snippets'}
-  use {'epilande/vim-react-snippets'}
+	use("mbbill/undotree")
 
+	use("tpope/vim-fugitive")
 
-  use {'catppuccin/nvim', as = 'catppuccin'}
-  use 'Mofiqul/vscode.nvim'
+	use({
+		"nvim-lualine/lualine.nvim",
+		requires = { "kyazdani42/nvim-web-devicons", opt = true },
+	})
+	use({
+		"VonHeikemen/lsp-zero.nvim",
+		branch = "v1.x",
+		requires = {
+			-- lsp support
+			{ "neovim/nvim-lspconfig" }, -- Required
+			{ "williamboman/mason.nvim" }, -- Optional
+			{ "williamboman/mason-lspconfig.nvim" }, -- Optional
 
-  use 'kyazdani42/nvim-web-devicons'
-  use 'kyazdani42/nvim-tree.lua'
+			-- Autocompletion
+			{ "hrsh7th/nvim-cmp" }, -- Required
+			{ "hrsh7th/cmp-nvim-lsp" }, -- Required
+			{ "hrsh7th/cmp-buffer" }, -- Optional
+			{ "hrsh7th/cmp-path" }, -- Optional
+			{ "saadparwaiz1/cmp_luasnip" }, -- Optional
+			{ "hrsh7th/cmp-nvim-lua" }, -- Optional
 
--- Telescope
-  use 'nvim-telescope/telescope.nvim'
-  use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make'  }
-  use 'nvim-telescope/telescope-file-browser.nvim'
-  use 'nvim-telescope/telescope-project.nvim'
+			-- Snippets
+			{ "L3MON4D3/LuaSnip" }, -- Required
+			{ "rafamadriz/friendly-snippets" }, -- Optional
+		},
+	})
+	use("mfussenegger/nvim-jdtls")
 
--- LSP
+	use("mfussenegger/nvim-dap")
+	use("rcarriga/cmp-dap")
+	use("rcarriga/nvim-dap-ui")
 
-  use 'folke/which-key.nvim'
+	use("tpope/vim-commentary")
 
-  use 'lewis6991/gitsigns.nvim'
+	use({
+		"akinsho/toggleterm.nvim",
+		tag = "*",
+		config = function()
+			require("toggleterm").setup()
+		end,
+	})
 
-  use {
-  'VonHeikemen/lsp-zero.nvim',
-  branch = 'v1.x',
-  requires = {
-    -- LSP Support
-    {'neovim/nvim-lspconfig'},             -- Required
-    {'williamboman/mason.nvim'},           -- Optional
-    {'williamboman/mason-lspconfig.nvim'}, -- Optional
+	use("nvim-tree/nvim-web-devicons")
+	-- Prettier
+	use("jose-elias-alvarez/null-ls.nvim")
+	use("MunifTanjim/prettier.nvim") -- Lua
 
-    -- Autocompletion
-    {'hrsh7th/nvim-cmp'},         -- Required
-    {'hrsh7th/cmp-nvim-lsp'},     -- Required
-    {'hrsh7th/cmp-buffer'},       -- Optional
-    {'hrsh7th/cmp-path'},         -- Optional
-    {'saadparwaiz1/cmp_luasnip'}, -- Optional
-    {'hrsh7th/cmp-nvim-lua'},     -- Optional
+	use({
+		"folke/which-key.nvim",
+		config = function()
+			vim.o.timeout = true
+			vim.o.timeoutlen = 300
+			require("which-key").setup({
+				-- your configuration comes here
+				-- or leave it empty to use the default settings
+				-- refer to the configuration section below
+			})
+		end,
+	})
 
-    -- Snippets
-    {'L3MON4D3/LuaSnip'},             -- Required
-    {'rafamadriz/friendly-snippets'}, -- Optional
-  }
-}
+	use("nvim-tree/nvim-tree.lua")
 
-  use({
-    'rose-pine/neovim',
-    as = 'rose-pine',
-    config = function()
-        require("rose-pine").setup()
-        vim.cmd('colorscheme rose-pine')
-    end
-  })
-
-  -- Automatically set up your configuration after cloning packer.nvim
-  -- Put this at the end after all plugins
-  if PACKER_BOOTSTRAP then
-    require("packer").sync()
-  end
+	use({
+		"jackMort/ChatGPT.nvim",
+		config = function()
+			require("chatgpt").setup({
+			})
+		end,
+		requires = {
+			"MunifTanjim/nui.nvim",
+			"nvim-lua/plenary.nvim",
+		},
+	})
 end)
